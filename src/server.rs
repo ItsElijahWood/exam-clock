@@ -3,7 +3,7 @@ use std::{io::Write, net::{TcpListener, TcpStream}};
 pub fn server(addr: &str) {
     let addr = format!("127.0.0.1{}", addr);
 
-    println!("Go to http://localhost:3000 on google to get to the exam clock.");
+    println!("Go to http://127.0.0.1:3000 on google to get to the exam clock.");
     let tcp = TcpListener::bind(addr).expect("Error setting up web server: Failed to bind address to TcpListener in file server.rs");
 
     for stream in tcp.incoming() {
