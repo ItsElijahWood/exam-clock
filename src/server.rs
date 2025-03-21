@@ -24,7 +24,8 @@ fn index(mut stream: &TcpStream) {
                     const now = new Date();
                     const hours = String(now.getHours()).padStart(2, '0');
                     const minutes = String(now.getMinutes()).padStart(2, '0');
-                    document.querySelector('.time').value = `${hours}:${minutes}`;
+                    const seconds = String(now.getSeconds()).padStart(2, '0');
+                    document.querySelector('.time').value = `${hours}:${minutes}:${seconds}`;
                 }
                 setInterval(updateTime, 1000);
                 window.onload = updateTime;
@@ -42,7 +43,7 @@ fn index(mut stream: &TcpStream) {
                 </div>
                 <div style='display: flex; gap: 60px; align-items: center;'>
                     <p style='color: white; font-size: 100px;'>Current Time</p>
-                    <input class='time' style='width: 300px; color: red; border: none; background: none; font-size: 100px;' readonly>
+                    <input class='time' style='width: 400px; color: red; border: none; background: none; font-size: 100px;' readonly>
                 </div>
             </div>
         </body>
