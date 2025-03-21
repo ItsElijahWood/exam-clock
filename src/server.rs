@@ -19,9 +19,32 @@ fn index(mut stream: &TcpStream) {
         <html>
         <head>
             <title>Exam Clock</title>
+            <script>
+                function updateTime() {
+                    const now = new Date();
+                    const hours = String(now.getHours()).padStart(2, '0');
+                    const minutes = String(now.getMinutes()).padStart(2, '0');
+                    document.querySelector('.time').value = `${hours}:${minutes}`;
+                }
+                setInterval(updateTime, 1000);
+                window.onload = updateTime;
+            </script>
         </head>
-        <body>
-
+        <body style='margin: 0; background-color: black;'>
+            <div style='display: flex; height: 100%; flex-direction: column; gap: 40px; align-items: center; justify-content: center;'>
+                <div style='display: flex; gap: 60px; align-items: center;'>
+                    <p style='color: white; font-size: 100px;'>Exam Start</p>
+                    <input class='start' style='width: 300px; color: red; border: none; background: none; font-size: 100px;' placeholder='--:--'>
+                </div>
+                <div style='display: flex; gap: 60px; align-items: center;'>
+                    <p style='color: white; font-size: 100px;'>Exam Finish</p>
+                    <input class='end' style='width: 300px; color: red; border: none; background: none; font-size: 100px;' placeholder='--:--'>
+                </div>
+                <div style='display: flex; gap: 60px; align-items: center;'>
+                    <p style='color: white; font-size: 100px;'>Current Time</p>
+                    <input class='time' style='width: 300px; color: red; border: none; background: none; font-size: 100px;' readonly>
+                </div>
+            </div>
         </body>
         </html>
     ";
